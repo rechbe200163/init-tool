@@ -9,6 +9,7 @@ import { extendedPrismaClient } from 'prisma/prisma.extension';
 import { ConfigModule } from '@nestjs/config';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { UpdateProgressModule } from './update-progress/update-progress.module';
+import { EmailModule } from './email/email.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { UpdateProgressModule } from './update-progress/update-progress.module';
     }),
     EventEmitterModule.forRoot(),
     UpdateProgressModule,
+    EmailModule,
   ],
   controllers: [AppController],
   providers: [AppService],

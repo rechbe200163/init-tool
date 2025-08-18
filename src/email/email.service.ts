@@ -10,12 +10,14 @@ export class EmailService {
   @OnEvent('init.start')
   async initStartEmail(data: EventPayloads['init.start']) {
     const { email, initStatus } = data;
-    console.log(`Email sent to ${email} with status: ${initStatus.status}`);
+    console.log(
+      `Sending email to ${email} with status: ${initStatus.status} and progress: ${initStatus.progress}`,
+    );
 
     await this.mailerService.sendMail({
       to: email,
       template: './init-start',
-      context: { initStatus },
+      context: { status: initStatus.status, progress: initStatus.progress },
     });
   }
 }
