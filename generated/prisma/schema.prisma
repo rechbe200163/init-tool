@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model SiteConfig {
+  siteConfigId  String    @id @default(uuid(7))
+  companyName   String    @db.VarChar(255)
+  email         String    @unique @db.VarChar(255)
+  phoneNumber   String    @db.VarChar(255)
+  iban          String    @db.VarChar(255)
+  companyNumber String    @db.VarChar(255)
+  addressId     String
+  modifiedAt    DateTime? @default(dbgenerated("null")) @updatedAt
+  deleted       Boolean   @default(false)
+  address       Address   @relation(fields: [addressId], references: [addressId])
+}
+
+model Address {
+  addressId    String    @id @default(uuid(7))
+  city         String    @db.VarChar(100)
+  country      String    @db.VarChar(40)
+  postCode     String    @db.VarChar(10)
+  state        String    @db.VarChar(40)
+  streetName   String    @db.VarChar(255)
+  streetNumber String    @db.VarChar(30)
+  modifiedAt   DateTime? @default(dbgenerated("null")) @updatedAt
+  deleted      Boolean   @default(false)
+
+  siteConfig SiteConfig[]
+
+  @@index([postCode], name: "address_post_code_index")
+  @@map("addresses")
+}
