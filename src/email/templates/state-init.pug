@@ -1,0 +1,88 @@
+doctype html
+html(lang="de")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Fortschritt Ihrer Anwendung - OrderLink
+    style.
+      body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+      }
+      .header {
+        background-color: #1e1e24;
+        padding: 25px 0;
+        text-align: center;
+        border-bottom: 4px solid #e63946;
+      }
+      .logo {
+        width: 180px;
+        margin: 0 auto;
+      }
+      .content {
+        padding: 40px 30px;
+        background-color: #ffffff;
+      }
+      h2 {
+        color: #2b2d42;
+        font-size: 24px;
+        margin: 0 0 20px;
+      }
+      p {
+        color: #555555;
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 0 0 20px;
+      }
+      .progress-bar-bg {
+        background-color: #e0e0e0;
+        border-radius: 20px;
+        width: 100%;
+        height: 24px;
+        margin: 20px 0;
+        overflow: hidden;
+      }
+      .progress-bar {
+        background-color: #e63946;
+        height: 100%;
+        width: #{progress}%;
+        transition: width 0.5s;
+        border-radius: 20px 0 0 20px;
+        text-align: right;
+        color: #fff;
+        font-weight: bold;
+        line-height: 24px;
+        padding-right: 10px;
+      }
+      .footer {
+        background-color: #1e1e24;
+        color: #ffffff;
+        padding: 30px;
+        text-align: center;
+      }
+      .powered {
+        font-size: 14px;
+        color: #aaaaaa;
+        margin-top: 10px;
+      }
+  body
+    .container
+      .header
+        img.logo(src="https://placeholder.svg?height=60&width=180" alt="OrderLink Logo")
+      .content
+        h2 Fortschritt Ihrer Anwendung
+        p Status: #{status}
+        .progress-bar-bg
+          .progress-bar(style=`width: ${progress}%`) #{progress}%
+        p Wir halten Sie über den Fortschritt Ihrer Anwendung auf dem Laufenden.
+      .footer
+        p &copy; #{new Date().getFullYear()} #{companyName}. Alle Rechte vorbehalten.
+        .powered Powered by OrderLink
