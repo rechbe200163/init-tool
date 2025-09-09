@@ -19,8 +19,7 @@ export class AddressController {
 
   @Post()
   create(@Body() createAddressDto: CreateAddressDto) {
-    console.log('Create Address DTO:', createAddressDto);
-    // return this.addressService.create(createAddressDto);
+    return this.addressService.create(createAddressDto);
   }
 
   @Get()

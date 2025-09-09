@@ -1,10 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreateAddressDto } from './dto/create-address.dto';
+import { AddressRepository } from './address.repository';
 
 @Injectable()
 export class AddressService {
+  constructor(private readonly addressRepo: AddressRepository) {}
   create(createAddressDto: CreateAddressDto) {
-    return 'This action adds a new address';
+    return this.addressRepo.create(createAddressDto);
   }
 
   findAll() {

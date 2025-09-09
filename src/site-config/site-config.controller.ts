@@ -1,12 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
 import { SiteConfigService } from './site-config.service';
 import { SiteConfigDto } from './dto/site-config.dto';
 import { ApiBody, ApiOkResponse } from '@nestjs/swagger';
@@ -21,7 +13,7 @@ export class CompanyController {
   @ApiOkResponse({ type: SiteConfigDto })
   create(@Body() createSiteConfigDto: CreateSiteConfigDto) {
     console.log('Create SiteConfig DTO:', createSiteConfigDto);
-    // return this.siteConfigService.create(createSiteConfigDto);
+    return this.siteConfigService.create(createSiteConfigDto);
   }
 
   @Get()

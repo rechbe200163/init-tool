@@ -1,10 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { CreateSiteConfigDto } from './dto/create-siteConfig.dto';
+import { SiteConfigRepository } from './site-config.repository';
 
 @Injectable()
 export class SiteConfigService {
+  constructor(private readonly siteConfigRepo: SiteConfigRepository) {}
+
   create(createSiteConfigDto: CreateSiteConfigDto) {
-    return createSiteConfigDto;
+    return this.siteConfigRepo.create(createSiteConfigDto);
   }
 
   findAll() {

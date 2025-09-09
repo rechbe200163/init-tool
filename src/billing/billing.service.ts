@@ -15,7 +15,7 @@ export class BillingService {
 
   constructor() {
     this.stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-      apiVersion: '2025-07-30.basil',
+      apiVersion: '2025-08-27.basil',
       typescript: true,
     });
   }
@@ -25,7 +25,7 @@ export class BillingService {
     const event = this.stripe.webhooks.constructEvent(
       payload,
       signature,
-      secret
+      secret,
     );
     await this.handleStripeEvent(event);
   }
@@ -35,7 +35,7 @@ export class BillingService {
       case 'checkout.session.completed': {
         const session = event.data.object as Stripe.Checkout.Session;
         console.log(
-          `Stripe checkout completed for session ${session.id}, customer ${session.customer}, total: ${session.amount_total}, currency: ${session.currency}, session: ${JSON.stringify(session)}`
+          `Stripe checkout completed for session ${session.id}, customer ${session.customer}, total: ${session.amount_total}, currency: ${session.currency}, session: ${JSON.stringify(session)}`,
         );
         break;
       }
