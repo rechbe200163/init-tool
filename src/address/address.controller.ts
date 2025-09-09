@@ -13,13 +13,14 @@ import { ApiInternalServerErrorResponse } from '@nestjs/swagger';
 import { CreateAddressDto } from './dto/create-address.dto';
 
 @ApiInternalServerErrorResponse({ description: 'Internal server error' })
-@Controller('address')
+@Controller('addresses')
 export class AddressController {
   constructor(private readonly addressService: AddressService) {}
 
   @Post()
   create(@Body() createAddressDto: CreateAddressDto) {
-    return this.addressService.create(createAddressDto);
+    console.log('Create Address DTO:', createAddressDto);
+    // return this.addressService.create(createAddressDto);
   }
 
   @Get()

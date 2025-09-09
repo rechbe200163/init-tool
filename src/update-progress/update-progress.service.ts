@@ -5,9 +5,7 @@ import { TypedEventEmitter } from 'src/event-emitter/typed-event-emitter.class';
 
 @Injectable()
 export class UpdateProgressService {
-  constructor(
-    private readonly eventEmitter: TypedEventEmitter, // Assuming you have a TypedEventEmitter for event handling
-  ) {}
+  constructor(private readonly eventEmitter: TypedEventEmitter) {}
 
   create(createUpdateProgressDto: CreateUpdateProgressDto) {
     return this.eventEmitter.emit('init.start', {

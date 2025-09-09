@@ -40,14 +40,18 @@ async function bootstrap() {
     apiReference({
       url: '/openapi.json', // alternativ: content: document
       withFastify: true, // WICHTIG bei Fastify-Adapter
-      theme: 'nestjs', // 'default' | 'moon' | 'purple' | 'solarized' | 'alternate'
+      theme: 'default', // 'default' | 'moon' | 'purple' | 'solarized' | 'alternate'
     }),
   );
 
   // Upload & Static Assets (dein bestehendes Setup)
   app.register(contentParser);
   app.useStaticAssets({ root: join(__dirname, '../../fastify-file-upload') });
+  app.use((req, _res, next) => {
+    console.log('[INCOMING]', req.method, req.url);
+    next();
+  });
 
-  await app.listen(process.env.PORT ?? 3000, '0.0.0.0');
+  await app.listen(process.env.PORT ?? 3003, '0.0.0.0');
 }
 bootstrap();

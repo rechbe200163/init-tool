@@ -47,12 +47,4 @@ export class CreateSiteConfigDto {
   })
   @IsString()
   companyNumber: string;
-
-  @ApiProperty({
-    description: 'The address ID for the site configuration',
-    required: true,
-    default: '70d771e6-a3c0-401e-9991-4b0e3d05d0d9',
-  })
-  @IsUUID()
-  addressId: string;
 }

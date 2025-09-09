@@ -12,15 +12,16 @@ import { SiteConfigDto } from './dto/site-config.dto';
 import { ApiBody, ApiOkResponse } from '@nestjs/swagger';
 import { CreateSiteConfigDto } from './dto/create-siteConfig.dto';
 
-@Controller('site-config')
-export class SiteConfigController {
+@Controller('companies')
+export class CompanyController {
   constructor(private readonly siteConfigService: SiteConfigService) {}
 
   @Post()
   @ApiBody({ type: CreateSiteConfigDto })
   @ApiOkResponse({ type: SiteConfigDto })
   create(@Body() createSiteConfigDto: CreateSiteConfigDto) {
-    return this.siteConfigService.create(createSiteConfigDto);
+    console.log('Create SiteConfig DTO:', createSiteConfigDto);
+    // return this.siteConfigService.create(createSiteConfigDto);
   }
 
   @Get()

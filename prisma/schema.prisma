@@ -18,6 +18,8 @@ model SiteConfig {
   addressId        String
   modifiedAt       DateTime? @default(dbgenerated("null")) @updatedAt
   deleted          Boolean   @default(false)
+  stripeCustomerId String?   @db.VarChar(255)
+  stripeAccountId  String?   @db.VarChar(255)
   address          Address   @relation(fields: [addressId], references: [addressId])
 }
 
