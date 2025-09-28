@@ -5,7 +5,6 @@ import { AppController } from './app.controller';
 import { EmailModule } from './email/email.module';
 import { CustomPrismaModule } from 'nestjs-prisma';
 import { ThrottlerModule } from '@nestjs/throttler';
-import { BillingModule } from './billing/billing.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { extendedPrismaClient } from 'prisma/prisma.extension';
 import { UpdateProgressModule } from './update-progress/update-progress.module';
