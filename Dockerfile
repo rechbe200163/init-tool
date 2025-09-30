@@ -1,42 +1,23 @@
-# syntax=docker/dockerfile:1
-FROM node:22-alpine AS base
+FROM node:20.11.1-alpine
+
+# Set working directory
 WORKDIR /app
-RUN apk add --no-cache libc6-compat openssl
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable && corepack prepare pnpm@9 --activate
 
-# --- deps: volle Dev+Prod-Dependencies (für Build/Generate)
-FROM base AS deps
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
-# --- build: generieren/kompilieren mit Dev-Deps
-FROM base AS build
-COPY --from=deps /app/node_modules ./node_modules
-COPY prisma ./prisma
-# Prisma CLI temporär, falls nicht als devDep vorhanden:
-RUN pnpm dlx prisma@latest generate
+# Install dependencies
+RUN npm cache clean --force
+RUN npm install --legacy-peer-deps
+
+# Copy the rest of the application code
 COPY . .
-# Falls TS:
-RUN pnpm build
 
-# --- prod-deps: NUR Produktions-Dependencies
-FROM base AS prod-deps
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile --prod
+# Generate Prisma Client code
+RUN npx prisma generate
 
-# --- runner: klein & sauber
-FROM node:22-alpine AS runner
-WORKDIR /app
-ENV NODE_ENV=production
-
-# nur Prod-Node_modules übernehmen
-COPY --from=prod-deps /app/node_modules ./node_modules
-# App-Artefakte aus Build übernehmen
-COPY --from=build /app/prisma ./prisma
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/package.json ./package.json
-
+# Expose the port the app runs on, here, I was using port 3333
 EXPOSE 3333
-CMD ["npm","run","start:migrate:prod"]
+
+# Command to run the app
+CMD [  "npm", "run", "start:migrate:prod" ]
