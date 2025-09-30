@@ -17,5 +17,5 @@ RUN pnpm install --frozen-lockfile
 RUN pnpm prisma generate
 # Baue dein Projekt (optional)
 RUN pnpm build
-
+EXPOSE 3003
 CMD ["pnpm", "start"]

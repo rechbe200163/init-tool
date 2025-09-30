@@ -4,12 +4,4 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        HUSKY: 0
-    environment:
-      - NODE_ENV=production
-    expose:
-      - 3003
     restart: unless-stopped
-    env_file:
-      - .env
