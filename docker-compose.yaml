@@ -8,9 +8,8 @@ services:
         HUSKY: 0
     environment:
       - NODE_ENV=production
-      - PORT=${PORT}
     expose:
-      - ${PORT}
+      - 3003
     restart: unless-stopped
     env_file:
       - .env
