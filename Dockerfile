@@ -19,7 +19,7 @@ COPY prisma ./prisma
 RUN pnpm dlx prisma@latest generate
 COPY . .
 # Falls TS:
-# RUN pnpm build
+RUN pnpm build
 
 # --- prod-deps: NUR Produktions-Dependencies
 FROM base AS prod-deps
