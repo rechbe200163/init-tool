@@ -44,6 +44,7 @@
     "stripe": "^18.5.0"
   },
   "devDependencies": {
+    "prisma": "^6.15.0",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.35.0",
     "@nestjs/cli": "^11.0.10",
