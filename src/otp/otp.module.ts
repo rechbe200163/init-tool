@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { OtpService } from './otp.service';
-import { TypedEventEmitterModule } from 'src/event-emitter/event-emitter.module';
+import { TypedEventEmitterModule } from '../event-emitter/event-emitter.module';
 
 @Module({
   providers: [OtpService, TypedEventEmitterModule],

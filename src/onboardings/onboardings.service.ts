@@ -5,15 +5,14 @@ import {
   InternalServerErrorException,
 } from '@nestjs/common';
 import slugify from 'slugify';
-import { nanoid } from 'nanoid';
 import { CustomPrismaService } from 'nestjs-prisma';
-import { ExtendedPrismaClient } from 'prisma/prisma.extension';
 import { CreateOnboardingDto } from './dto/create-onboarding.dto';
 import { UpdateOnboardingDto } from './dto/update-onboarding.dto';
-import { TypedEventEmitter } from 'src/event-emitter/typed-event-emitter.class';
-import { seedTenantRBAC } from 'lib/common/rbac/seed-tenant-rbac';
-import { enableAllModulesForTenantDuringTrial } from 'lib/common/modules/enable-modules.seed';
-
+import { TypedEventEmitter } from '../event-emitter/typed-event-emitter.class';
+import { ExtendedPrismaClient } from '../../prisma/prisma.extension';
+import { seedTenantRBAC } from '../../lib/common/rbac/seed-tenant-rbac';
+import { enableAllModulesForTenantDuringTrial } from '../../lib/common/modules/enable-modules.seed';
+const { nanoid } = require('fix-esm').require('nanoid');
 @Injectable()
 export class OnboardingsService {
   constructor(

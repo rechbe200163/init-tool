@@ -2,8 +2,8 @@ import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { Otp } from '@prisma/client';
 import { randomInt } from 'node:crypto';
 import { CustomPrismaService } from 'nestjs-prisma';
-import { ExtendedPrismaClient } from 'prisma/prisma.extension';
-import { TypedEventEmitter } from 'src/event-emitter/typed-event-emitter.class';
+import { ExtendedPrismaClient } from '../../prisma/prisma.extension';
+import { TypedEventEmitter } from '../event-emitter/typed-event-emitter.class';
 
 @Injectable()
 export class OtpService {

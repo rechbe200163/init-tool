@@ -4,7 +4,7 @@ import { EmailController } from './email.controller';
 import { PugAdapter } from '@nestjs-modules/mailer/dist/adapters/pug.adapter';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { join } from 'path';
-import { OtpModule } from 'src/otp/otp.module';
+import { OtpModule } from '../otp/otp.module';
 
 @Module({
   imports: [

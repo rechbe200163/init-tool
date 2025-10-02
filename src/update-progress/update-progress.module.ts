@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { UpdateProgressService } from './update-progress.service';
 import { UpdateProgressController } from './update-progress.controller';
-import { TypedEventEmitterModule } from 'src/event-emitter/event-emitter.module';
+import { TypedEventEmitterModule } from '../event-emitter/event-emitter.module';
 
 @Module({
   imports: [TypedEventEmitterModule],

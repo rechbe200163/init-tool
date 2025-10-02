@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
 import { OnboardingsService } from './onboardings.service';
 import { OnboardingsController } from './onboardings.controller';
-import { TypedEventEmitterModule } from 'src/event-emitter/event-emitter.module';
-
+import { TypedEventEmitterModule } from '../event-emitter/event-emitter.module';
 @Module({
   imports: [TypedEventEmitterModule],
   controllers: [OnboardingsController],
