@@ -27,7 +27,14 @@ export class EmailService {
 
   @OnEvent('init.email')
   async employeeCreatedEmail(data: EventPayloads['init.email']) {
-    const { tenant, email, firstName, lastName, employeeId } = data;
+    const {
+      tenant,
+      email,
+      firstName,
+      lastName,
+      employeeId,
+      generatedPassword,
+    } = data;
 
     console.log(
       `Sending employee created email to ${email} with firstName: ${firstName}`,
@@ -52,6 +59,7 @@ export class EmailService {
         companyName: process.env.COMPANY_NAME,
         year: new Date().getFullYear(),
         activationCode: code,
+        generatedPassword,
         // otpTTLMinutes: process.env.OTP_TTL_MINUTES || 15,
       },
     });
