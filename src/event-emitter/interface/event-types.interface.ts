@@ -4,7 +4,7 @@ export interface EventPayloads {
     email: string;
     initStatus: InitStatus;
   };
-  'employee.created': {
+  'init.email': {
     tenant: {
       tenantSlug: string;
       tenantId: string;

@@ -24,8 +24,9 @@ export class EmailService {
       context: { status: initStatus.status, progress: initStatus.progress },
     });
   }
-  @OnEvent('employee.created')
-  async employeeCreatedEmail(data: EventPayloads['employee.created']) {
+
+  @OnEvent('init.email')
+  async employeeCreatedEmail(data: EventPayloads['init.email']) {
     const { tenant, email, firstName, lastName, employeeId } = data;
 
     console.log(
@@ -40,13 +41,18 @@ export class EmailService {
 
     await this.mailerService.sendMail({
       to: email,
-      template: './employee-created',
+      template: './init-information',
       context: {
         firstName,
         lastName,
         email,
         otp: code,
-        magicLink: `https://admin.orderlink.at/auth/${tenant.tenantSlug}/otp`,
+        magicLink: `${process.env.ADMIN_TOOL_URL}/auth/${tenant.tenantSlug}/otp`,
+        supportEmail: process.env.SUPPORT_EMAIL,
+        companyName: process.env.COMPANY_NAME,
+        year: new Date().getFullYear(),
+        activationCode: code,
+        // otpTTLMinutes: process.env.OTP_TTL_MINUTES || 15,
       },
     });
   }

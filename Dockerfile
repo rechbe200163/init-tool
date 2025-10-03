@@ -1,23 +1,21 @@
-FROM node:20.11.1-alpine
+# Dockerfile
+FROM node:20
 
-# Set working directory
-WORKDIR /app
+WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json
-COPY package*.json ./
+# Installiere pnpm global
+RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Install dependencies
-RUN npm cache clean --force
-RUN npm install --legacy-peer-deps
-
-# Copy the rest of the application code
 COPY . .
 
-# Generate Prisma Client code
-RUN npx prisma generate
+# Optional: Falls du .npmrc brauchst (z. B. Registry oder pnpm settings)
+# COPY .npmrc .npmrc
 
-# Expose the port the app runs on, here, I was using port 3333
-EXPOSE 3333
+# Installiere Dependencies mit pnpm
+RUN CI=true pnpm install --frozen-lockfile
 
-# Command to run the app
-CMD [  "npm", "run", "start:migrate:prod" ]
+RUN pnpm prisma generate
+# Baue dein Projekt (optional)
+RUN pnpm build
+
+CMD ["pnpm", "start"]

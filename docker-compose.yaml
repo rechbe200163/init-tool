@@ -1,9 +1,18 @@
 services:
   nest-api:
-    container_name: nest-api
+    container_name: nest-api-init-tool
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        HUSKY: 0
+    environment:
+      - NODE_ENV=production
     ports:
-      - '3003:3003'
+      - '3001:3001'
     restart: unless-stopped
+    env_file:
+      - .env
+
+volumes:
+  redis-data:

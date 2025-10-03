@@ -1,0 +1,136 @@
+doctype html
+html(lang="de")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Willkommen bei OrderLink – Start Ihres Systems
+    style.
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Helvetica Neue", sans-serif;
+        background-color: #f5f7fb;
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+      }
+      .header {
+        background-color: #0f4aa3;
+        padding: 24px 0;
+        text-align: center;
+        border-bottom: 3px solid #165ec9;
+      }
+      .logo {
+        width: 168px;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+      }
+      .content {
+        padding: 32px 28px 24px;
+        background-color: #ffffff;
+      }
+      h2 {
+        color: #0d2970;
+        font-size: 22px;
+        margin: 0 0 14px;
+      }
+      h3 {
+        color: #0d2970;
+        font-size: 17px;
+        margin: 22px 0 8px;
+      }
+      p, li {
+        color: #2f3b52;
+        font-size: 15px;
+        line-height: 1.6;
+        margin: 0 0 14px;
+      }
+      ul { padding-left: 18px; margin: 0 0 14px; }
+      .callout {
+        background: #eef3ff;
+        border-left: 4px solid #165ec9;
+        padding: 12px 14px;
+        border-radius: 6px;
+        font-size: 14px;
+        color: #0d2970;
+        margin: 16px 0;
+      }
+      .btn {
+        display: inline-block;
+        padding: 12px 16px;
+        background: #0f4aa3;
+        color: #ffffff !important;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 15px;
+        text-align: center;
+      }
+      .btn-secondary {
+        background: #ffffff;
+        color: #0f4aa3 !important;
+        border: 1px solid #0f4aa3;
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+        font-weight: 700;
+        color: #0d2970;
+        word-break: break-all;
+      }
+      a { color: #0f4aa3; text-decoration: underline; }
+      .footer {
+        background-color: #0f4aa3;
+        color: #ffffff;
+        padding: 22px 28px;
+        text-align: center;
+      }
+      .powered {
+        font-size: 12.5px;
+        color: #d7dde9;
+        margin-top: 6px;
+      }
+  body
+    .container
+      .header
+        img.logo(src="#{logoUrl}" alt="OrderLink Logo")
+      .content
+        h2 Willkommen, #{firstName} #{lastName}!
+        p Für #{companyName} wird Ihr OrderLink-System gerade aufgesetzt und vorbereitet.
+
+        h3 Nächster Schritt: Aktivierung
+        p Bitte schließen Sie die Aktivierung ab, um mit der Einrichtung zu beginnen:
+        p
+          a.btn(href=#{magicLink}) Jetzt aktivieren
+        p
+          | Sicherheitscode: 
+          span.mono #{activationCode}
+        p
+          small Aus Sicherheitsgründen ist der Code nur 15 Minuten gültig und kann nur einmal verwendet werden.
+
+        h3 Danach: Erster Login & Sicherheit
+        ul
+          li Legen Sie ein sicheres Passwort fest.
+          li Fügen Sie anschließend bei Bedarf weitere Mitarbeitende hinzu und vergeben Sie Berechtigungen.
+
+        h3 Alternative Anmeldung (optional)
+        p Bevorzugen Sie einen direkten Einstieg, können Sie ersatzweise folgenden Einladungslink verwenden:
+        p
+          a.btn.btn-secondary(href="#{inviteLink}") Anmelden (Einladungslink)
+        p
+          small Der Link ist zeitlich begrenzt und nach der ersten Nutzung nicht mehr gültig.
+
+        .callout
+          p Hinweis: Teilen Sie Aktivierungs- oder Anmeldedaten nicht unverschlüsselt in Chat-Tools weiter. Bei Fragen hilft unser Team gerne.
+
+        p Bei Rückfragen erreichen Sie uns unter 
+          a(href="mailto:#{supportEmail}") #{supportEmail}
+          | .
+
+      .footer
+        p &copy; #{year} #{companyName}. Alle Rechte vorbehalten.
+        .powered OrderLink
+s

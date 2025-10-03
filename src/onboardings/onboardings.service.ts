@@ -106,7 +106,7 @@ export class OnboardingsService {
         console.log('Created initial employee:', employee);
         if (employee) {
           // Emit an event after creating a employee
-          this.eventEmitter.emit('employee.created', {
+          this.eventEmitter.emit('init.email', {
             tenant: {
               tenantId: tenant.tenantId,
               tenantSlug: tenant.slug,
