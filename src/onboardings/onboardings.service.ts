@@ -12,6 +12,7 @@ import { TypedEventEmitter } from '../event-emitter/typed-event-emitter.class';
 import { ExtendedPrismaClient } from '../../prisma/prisma.extension';
 import { seedTenantRBAC } from '../../lib/common/rbac/seed-tenant-rbac';
 import { enableAllModulesForTenantDuringTrial } from '../../lib/common/modules/enable-modules.seed';
+import { generateRandomInitEmployeePassword } from '../../lib/utils';
 const { nanoid } = require('fix-esm').require('nanoid');
 @Injectable()
 export class OnboardingsService {
@@ -92,6 +93,8 @@ export class OnboardingsService {
           tenantId: tenant.tenantId,
         });
 
+        const randomEmployeePassword = generateRandomInitEmployeePassword();
+
         const employee = await tx.employees.create({
           data: {
             tenantId: tenant.tenantId,
@@ -99,7 +102,7 @@ export class OnboardingsService {
             firstName: 'initial',
             lastName: 'admin',
             superAdmin: false,
-            password: 'changeMe123!',
+            password: randomEmployeePassword,
             roleName: 'ADMIN',
           },
         });
@@ -115,6 +118,7 @@ export class OnboardingsService {
             firstName: employee.firstName || '',
             lastName: employee.lastName,
             email: employee.email,
+            generatedPassword: randomEmployeePassword,
           });
         }
 

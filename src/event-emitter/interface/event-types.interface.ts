@@ -13,6 +13,7 @@ export interface EventPayloads {
     firstName: string;
     lastName: string;
     email: string;
+    generatedPassword: string;
   };
 }
 
