@@ -4,7 +4,8 @@ import { OtpService } from '../otp/otp.service';
 import { EventPayloads } from '../event-emitter/interface/event-types.interface';
 import { Resend } from 'resend';
 import { readFile } from 'fs/promises';
-import { join } from 'path';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 
 type TemplateContext = Record<
   string,
@@ -26,7 +27,10 @@ export class EmailService {
 
   private readonly logger = new Logger(EmailService.name);
   private readonly templateCache = new Map<string, string>();
+
+  // Dynamisch: funktioniert in dist und src
   private readonly templatesDir = join(__dirname, 'templates');
+
   private readonly fromEmail: string;
 
   @OnEvent('init.start')
