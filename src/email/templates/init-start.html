@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fortschritt Ihrer OrderLink Einrichtung</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: #f4f6fb;
+      color: #1f2933;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(31, 41, 51, 0.08);
+    }
+    .header {
+      background: linear-gradient(120deg, #0f4aa3, #165ec9);
+      color: #ffffff;
+      text-align: center;
+      padding: 28px 24px;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 0.4px;
+    }
+    .content {
+      padding: 32px 36px;
+    }
+    .content h2 {
+      margin: 0 0 16px;
+      font-size: 22px;
+      color: #0d2970;
+    }
+    .content p {
+      margin: 0 0 18px;
+      line-height: 1.6;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #eef3ff;
+      color: #0f4aa3;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      margin-bottom: 8px;
+    }
+    .progress-wrapper {
+      background: #e5e9f4;
+      border-radius: 999px;
+      height: 16px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(120deg, #0f4aa3, #e63946);
+      border-radius: 999px;
+      text-align: right;
+      font-size: 12px;
+      font-weight: 600;
+      color: #ffffff;
+      padding-right: 12px;
+      line-height: 16px;
+      width: {{progress}}%;
+    }
+    .footer {
+      padding: 24px 16px;
+      text-align: center;
+      background: #0f4aa3;
+      color: #d7dde9;
+      font-size: 14px;
+    }
+    .footer strong {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>OrderLink Fortschritt</h1>
+    </header>
+    <section class="content">
+      <span class="status-badge">{{status}}</span>
+      <h2>Wir sind mitten in Ihrer Einrichtung</h2>
+      <p>
+        Unser Team richtet Ihr System gerade fuer Sie ein. Sie erhalten eine Nachricht,
+        sobald der naechste Schritt bereitsteht.
+      </p>
+      <div class="progress-wrapper" aria-label="Fortschritt">
+        <div class="progress-bar">{{progress}}%</div>
+      </div>
+      <p>
+        Vielen Dank fuer Ihre Geduld. Bei Fragen sind wir jederzeit gerne fuer Sie da.
+      </p>
+    </section>
+    <footer class="footer">
+      &copy; {{year}} <strong>{{companyName}}</strong>. Alle Rechte vorbehalten.
+    </footer>
+  </div>
+</body>
+</html>
