@@ -2,10 +2,9 @@ name: Build and Deploy Bun NextJS App
 
 on:
   push:
-    branches:
-      - main
-    paths-ignore:
-      - '**.md'
+    branches: ['master']
+  pull_request:
+    branches: ['master']
 
 jobs:
   build:
