@@ -25,7 +25,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: ./init-tool
-          file: ./init-tool/Dockerfile
+          context: ./
+          file: ./Dockerfile
           push: true
           tags: rechbe200163/orderlink-landing-page-backend:latest
