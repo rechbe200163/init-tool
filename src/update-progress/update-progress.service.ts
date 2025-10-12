@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUpdateProgressDto } from './dto/create-update-progress.dto';
 import { UpdateUpdateProgressDto } from './dto/update-update-progress.dto';
-import { TypedEventEmitter } from 'src/event-emitter/typed-event-emitter.class';
+import { TypedEventEmitter } from '../event-emitter/typed-event-emitter.class';
 
 @Injectable()
 export class UpdateProgressService {

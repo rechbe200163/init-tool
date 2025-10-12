@@ -4,6 +4,17 @@ export interface EventPayloads {
     email: string;
     initStatus: InitStatus;
   };
+  'init.email': {
+    tenant: {
+      tenantSlug: string;
+      tenantId: string;
+    };
+    employeeId: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    generatedPassword: string;
+  };
 }
 
 type InitStatus = {

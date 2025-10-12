@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Willkommen bei OrderLink</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: #f4f6fb;
+      color: #1f2933;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(31, 41, 51, 0.08);
+    }
+    .header {
+      background: linear-gradient(120deg, #0f4aa3, #165ec9);
+      color: #ffffff;
+      text-align: center;
+      padding: 28px 24px;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .content {
+      padding: 32px 36px;
+    }
+    .content h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      color: #0d2970;
+    }
+    .section-title {
+      margin: 28px 0 12px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #0d2970;
+    }
+    p {
+      margin: 0 0 18px;
+      line-height: 1.6;
+    }
+    ul {
+      margin: 0 0 18px 20px;
+      padding: 0;
+      line-height: 1.6;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 10px;
+      background: #0f4aa3;
+      color: #ffffff !important;
+      font-weight: 600;
+      text-decoration: none;
+      margin-bottom: 18px;
+    }
+    .code-box {
+      background: #eef3ff;
+      border-left: 4px solid #165ec9;
+      padding: 14px 18px;
+      border-radius: 8px;
+      font-family: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 15px;
+      letter-spacing: 2px;
+      color: #0d2970;
+      margin-bottom: 18px;
+    }
+    .callout {
+      background: #f9fafc;
+      border: 1px solid #d7dde9;
+      border-radius: 8px;
+      padding: 16px 18px;
+      font-size: 14px;
+      color: #334156;
+      margin: 22px 0;
+    }
+    .footer {
+      padding: 24px 16px;
+      text-align: center;
+      background: #0f4aa3;
+      color: #d7dde9;
+      font-size: 14px;
+    }
+    .footer strong {
+      color: #ffffff;
+    }
+    a {
+      color: #0f4aa3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Willkommen bei OrderLink</h1>
+    </header>
+    <section class="content">
+      <h2>Hallo {{firstName}} {{lastName}},</h2>
+      <p>
+        Ihr Zugang fuer <strong>{{companyName}}</strong> ist bereit. Mit dem folgenden Link aktivieren Sie Ihr Konto und legen Ihr persoenliches Passwort fest.
+      </p>
+
+      <a class="btn" href="{{magicLink}}">Jetzt aktivieren</a>
+
+      <div class="code-box">{{activationCode}}</div>
+      <p>Der Sicherheitscode ist 15 Minuten gueltig und kann nur einmal verwendet werden.</p>
+
+      <p class="section-title">Naechste Schritte</p>
+      <ul>
+        <li>Vergeben Sie nach dem ersten Login ein eigenes, sicheres Passwort.</li>
+        <li>Ihr temporaeres Passwort lautet: <strong>{{generatedPassword}}</strong></li>
+        <li>Fuegen Sie optional weitere Teammitglieder hinzu und vergeben Sie passende Rollen.</li>
+      </ul>
+
+      <div class="callout">
+        Teilen Sie Ihren Sicherheitscode und Link nur mit autorisierten Personen. Bei Fragen hilft unser Support-Team gerne weiter.
+      </div>
+
+      <p>
+        Support: <a href="mailto:{{supportEmail}}">{{supportEmail}}</a>
+      </p>
+    </section>
+    <footer class="footer">
+      &copy; {{year}} <strong>{{companyName}}</strong>. Alle Rechte vorbehalten.
+    </footer>
+  </div>
+</body>
+</html>

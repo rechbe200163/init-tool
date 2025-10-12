@@ -12,7 +12,7 @@ COPY . .
 # COPY .npmrc .npmrc
 
 # Installiere Dependencies mit pnpm
-RUN pnpm install --frozen-lockfile
+RUN CI=true pnpm install --frozen-lockfile
 
 RUN pnpm prisma generate
 # Baue dein Projekt (optional)

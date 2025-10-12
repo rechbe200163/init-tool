@@ -7,6 +7,7 @@ import {
   Patch,
   Param,
   Delete,
+  NotImplementedException,
 } from '@nestjs/common';
 import { UpdateProgressService } from './update-progress.service';
 import { CreateUpdateProgressDto } from './dto/create-update-progress.dto';
@@ -18,17 +19,20 @@ export class UpdateProgressController {
 
   @Post()
   create(@Body() createUpdateProgressDto: CreateUpdateProgressDto) {
-    return this.updateProgressService.create(createUpdateProgressDto);
+    // return this.updateProgressService.create(createUpdateProgressDto);
+    return new NotImplementedException();
   }
 
   @Get()
   findAll() {
-    return this.updateProgressService.findAll();
+    // return this.updateProgressService.findAll();
+    return new NotImplementedException();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.updateProgressService.findOne(+id);
+    // return this.updateProgressService.findOne(+id);
+    return new NotImplementedException();
   }
 
   @Patch(':id')
@@ -36,11 +40,13 @@ export class UpdateProgressController {
     @Param('id') id: string,
     @Body() updateUpdateProgressDto: UpdateUpdateProgressDto,
   ) {
-    return this.updateProgressService.update(+id, updateUpdateProgressDto);
+    // return this.updateProgressService.update(+id, updateUpdateProgressDto);
+    return new NotImplementedException();
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.updateProgressService.remove(+id);
+    // return this.updateProgressService.remove(+id);
+    return new NotImplementedException();
   }
 }

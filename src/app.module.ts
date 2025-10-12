@@ -5,18 +5,14 @@ import { AppController } from './app.controller';
 import { EmailModule } from './email/email.module';
 import { CustomPrismaModule } from 'nestjs-prisma';
 import { ThrottlerModule } from '@nestjs/throttler';
-import { BillingModule } from './billing/billing.module';
-import { AddressModule } from './address/address.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
-import { extendedPrismaClient } from 'prisma/prisma.extension';
-import { SiteConfigModule } from './site-config/site-config.module';
 import { UpdateProgressModule } from './update-progress/update-progress.module';
+import { OtpModule } from './otp/otp.module';
+import { OnboardingsModule } from './onboardings/onboardings.module';
+import { extendedPrismaClient } from '../prisma/prisma.extension';
 
 @Module({
   imports: [
-    BillingModule,
-    SiteConfigModule,
-    AddressModule,
     CustomPrismaModule.forRootAsync({
       name: 'PrismaService',
       useFactory: () => {
@@ -39,6 +35,8 @@ import { UpdateProgressModule } from './update-progress/update-progress.module';
     EventEmitterModule.forRoot(),
     UpdateProgressModule,
     EmailModule,
+    OtpModule,
+    OnboardingsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
