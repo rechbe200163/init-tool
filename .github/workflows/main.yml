@@ -28,4 +28,5 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
+          platforms: linux/arm64
           tags: rechbe200163/orderlink-landing-page-backend:latest
